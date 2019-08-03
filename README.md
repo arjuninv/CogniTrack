@@ -1,4 +1,4 @@
-# CogniTrack
+## CogniTrack
 ![CogniTrack](https://cognitrackproject.firebaseapp.com/assets/hero.png)
 
 
