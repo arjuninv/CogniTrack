@@ -21,3 +21,5 @@ pip install -r requirements.txt
 ```
 python index.py
 ```
+## License
+The project is published under the MIT license, which means that you can use it for any purpose, personal or commercial. There is no obligation to publish your source code.
