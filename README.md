@@ -2,8 +2,8 @@
 ![CogniTrack](https://cognitrackproject.firebaseapp.com/assets/hero.png)
 
 
-> Raspberry Pi Client: https://github.com/ArjunInventor/CogniTrack-RPi
-> Website: CogniTrackProject.firebaseapp.com
+Raspberry Pi Client: https://github.com/ArjunInventor/CogniTrack-RPi
+Website: https://CogniTrackProject.firebaseapp.com
 ## Overview
 CogniTrack is an Artificial Intelligence powered person tracking system that acquires images from CCTV cameras (in stream or in batch), and track individuals appearing in the frame in real-time using several advanced Deep Learning Models. 
 
