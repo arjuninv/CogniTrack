@@ -1,0 +1,20 @@
+
+<style>
+table, th, td {
+  border: 1px solid black;
+}</style>
+
+
+  <table >
+    <tr>
+      <th>Time</th>
+      <th>Camera ID</th> 
+    </tr>
+    {% for row in test %}
+    <tr>
+      <td>{{ row[0] }}</td>
+      <td>{{ row[1] }}</td> 
+    </tr>
+    {% endfor %}
+
+  </table>

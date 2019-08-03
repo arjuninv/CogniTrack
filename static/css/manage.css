@@ -1,0 +1,28 @@
+.md-form.md-outline label.active {
+    background-color: #fafafa !important;
+    background: #fafafa!important;
+}
+
+img {
+    max-width:100%!important;
+    max-height:100%!important;
+}
+
+.profile {
+    position: relative;
+    height: auto!important;
+    padding: 5px!important;
+}
+
+#open_file {
+    position: absolute;
+    bottom: -4px;
+    width: 98%;
+    height: 98%;
+    background-color:  rgb(0, 0, 0, 0.3);
+    opacity: 0;    
+}
+
+#open_file:hover {
+    opacity: 1;    
+}

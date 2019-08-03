@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CogniTrack</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/css/mdb.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+        <nav class="navbar fixed-top navbar-expand-lg navbar-dark" id="navbar">
+                <a class="navbar-brand" href="#">CogniTrack</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                           <a class="nav-link waves-effect waves-light" href="./">Moniter <span class="sr-only">(current)</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link waves-effect waves-light" href="./manage">Manage</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <audio id="alert" src="{{ url_for('static', filename='audio/notification.m4a') }}" preload="auto"></audio>
+            <div class="modal fade right" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+              <div class="modal-dialog modal-side modal-bottom-right" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title w-100" id="myModalLabel">Alert!</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    <p id="alert_message"></p>
+                  </div>
+                </div>
+             </div>
+            </div>
+
+
+            <div class="col-2" id="sidenav">
+
+                <div class="list-group list-group-flush tab">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" id="p-tab" data-toggle="tab" href="#people" role="tab" aria-controls="home"
+                            aria-selected="true">People</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" id="c-tab" data-toggle="tab" href="#cameras" role="tab" aria-controls="profile"
+                            aria-selected="false">Cameras</a>
+                        </li>
+
+                      </ul>
+                      <div class="tab-content" id="">
+                        <div class="tab-pane fade show active" id="people" role="tabpanel" aria-labelledby="home-tab"><form class="form-inline sidebar-search">
+                              <div class="md-form my-0">
+                              <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                              </div>
+                              <div class="list-group" id="members">
+                                    <a href="#!" class="list-group-item list-group-item-action">
+                                      Loading...
+                                    </a>
+                                  
+                                  </div>
+                              </div>
+                        <div class="tab-pane fade" id="cameras" role="tabpanel" aria-labelledby="profile-tab">
+                                <div class="list-group" id="cam_list">
+                                  
+                                </div>
+                          </div>
+
+                      </div>
+        </div>
+    </div>
+
+
+            <div class="container-fluid" id="container">
+              
+
+                <div class="row" id="main">
+                        <div class="col-2 " >
+                    </div>
+
+                    
+                    <div class="col-10" id="dash">
+                            <div class="row">
+                              <div class="col">
+                                  <h5 style="padding-left: 15px; padding-top: 0px; color: #848484;">Live Video</h5>
+                                <div class="box">
+                                  <img id="frame" style="background-color: grey; max-height: 430px!important;">
+                                </div>
+                            </div>
+                              <div class="col" id="mem_panel">
+                                  <h5 style="padding-left: 15px; padding-top: 0px; color: #848484;">Details</h5>
+
+                                  <div class="box" style="padding: 30px">
+                                    <h5>ID</h5>
+                                    <p id="disp-id" style="color: grey"></p>
+                                    <h5>Name</h5>
+                                    <p id="disp-name" style="color: grey"> </p>
+                                    <h5>Phone Number</h5>
+                                    <p id="disp-phone" style="color: grey"></p>
+                                    <h5>Email ID</h5>
+                                    <p id="disp-email"style="color: grey"></p>
+                                    <h5>Authorised</h5>
+                                    <p id="disp-auth" style="color: grey"></p>
+                                    <a href="" id="log">View Log</a>
+
+                                    </div>
+                                  </div>
+                              <div class="col" id="cam_panel" style="display:none">
+                                  <h5 style="padding-left: 15px; padding-top: 0px; color: #848484;">Details</h5>
+                                  <div class="box" style="padding: 30px">
+                                    <h5>Camera ID</h5>
+                                    <p id="c-disp-id" style="color: grey"></p>
+                                    <h5>Location</h5>
+                                    <p id="c-disp-loc-name" style="color: grey"> </p>
+                                    <h5>Cordinates</h5>
+                                    <p id="c-disp-loc" style="color: grey"></p>
+                                    <h5>Status</h5>
+                                    <p id="c-disp-status" style="color: grey">Streaming...</p>
+                                    </div>
+                              </div>
+                            </div>
+                        <div class="row">
+                            <div class="col">
+
+                                    <h5 style="padding-left: 15px; padding-top: 20px; color: #848484;">Camera Location</h5>
+
+                                    <div class="box">
+                                        <div id="map"></div>
+                                    </div>
+                            </div>
+                            <div class="col" id="track_panel" style="display:none;">
+                                    <h5 style="padding-left: 15px; padding-top: 20px; color: #848484;">Tracking</h5>
+                                    <div class="box">
+                                            <table class="table">
+                                                    <thead>
+                                                      <tr>
+                                                        <th scope="col">Time</th>
+                                                        <th scope="col">ID</th>
+                                                        <th scope="col">Name</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody id="track_table">
+                                                      
+                                                    </tbody>
+                                                  </table>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
+
+          
+              </div>
+
+              <script>
+              setTimeout(fix, 1000);
+
+              function fix() {
+                if(document.getElementById("frame").naturalWidth == 0 && document.getElementById("frame").src != ""){
+                temp = document.getElementById("frame").style.backgroundColor = "black";
+                temp = document.getElementById("frame").src;
+                document.getElementById("frame").src = "";
+                document.getElementById("frame").src = temp;
+              }
+              else{
+                temp = document.getElementById("frame").style.backgroundColor = "grey";
+              }
+              setTimeout(fix, 2000);
+              }
+              </script>
+<script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/js/mdb.min.js"></script>
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUwfQnzFcVnQ9k3SuqY37aCB4epXO5FX8&callback=initMap">
+</script>
+</body>
+
+</html>

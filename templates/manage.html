@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>CogniTrack</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/manage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/css/mdb.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark" id="navbar">
+        <a class="navbar-brand" href="#">CogniTrack</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link waves-effect waves-light" href="./">Moniter</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link waves-effect waves-light" href="./manage">Manage <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid" id="container">
+        <div class="row" id="main">
+            <div class="col-2" id="sidenav">
+                <div class="list-group list-group-flush tab">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#people" role="tab" aria-controls="home" aria-selected="true">People</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="">
+                        <div class="tab-pane fade show active" id="people" role="tabpanel" aria-labelledby="home-tab"><form class="form-inline sidebar-search">
+                            <div class="list-group" id="members">
+                                <a href="#!" class="list-group-item list-group-item-action">
+                                  Loading...
+                                </a>
+                              
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+                <div class="col-10" id="dash">
+                    <div class="row">
+                        <div class="col-7">
+                            <div class="md-form md-outline">
+                                <input type="text" id="id" class="form-control" disabled onkeyup="refrm()">
+                                <label for="id">ID</label>
+                            </div>
+                            <div class="md-form md-outline">
+                                <input type="text" id="name" class="form-control" onkeyup="refrm()">
+                                <label for="name">Name</label>
+                            </div>
+                            <div class="md-form md-outline">
+                                <input type="number" id="phone" class="form-control" size="10" onkeyup="refrm()">
+                                <label for="phone">Phone Number</label>
+                            </div>
+                            <div class="md-form md-outline">
+                                <input type="email" id="email" class="form-control" onkeyup="refrm()">
+                                <label for="email">Email ID</label>
+                            </div>
+                            
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="auth" checked onclick="refrm()">
+                                <label class="custom-control-label" for="auth">Authorized</label>
+                            </div>
+                            <p style="color: grey; font-size: 15px; padding-top: 10px; padding-bottom: 10px;">Note: If unauthorised, you will recieve a notification every time this perosn is tracked.</p>
+                            <div class="d-flex flex-row">
+                            <button class="btn btn-primary btn-md" id="update_btn" disabled>Update</button>
+                            <button class="btn btn-danger btn-md animated fadeIn fast" id="delete_btn" style="display: none;">Delete</button>
+                            </div>
+
+                        </div>
+
+                        <div class="col">
+                                <h5 style="padding-left: 15px; padding-top: 0px; color: #848484;">Reference Image</h5>
+                            <div class="box profile">
+                                            <img src="" id="img" >
+                                        <div>
+                                            <input type="file" id="file" name="file" style="display:none" disabled/>
+                                            <label for="file" id="open_file">
+                                                <span style="position: absolute; top: calc(50% - 20px); left: calc(50% - 20px);"><i class="material-icons" style="color: white; font-size: 50px;">camera_alt</i></span>
+                                            </label>
+
+                                        </div>
+                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/5.8.3/firebase.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.7.1/js/mdb.min.js"></script>
+    <script src="{{ url_for('static', filename='js/manage.js') }}"></script>
+
+</body>
+
+</html>
