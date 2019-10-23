@@ -7,4 +7,4 @@ Keras==2.2.4
 numpy==1.16.2
 matplotlib==3.0.3
 scipy==1.2.1
-Pillow==6.1.0
+Pillow==6.2.0
