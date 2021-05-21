@@ -1,5 +1,5 @@
 opencv_python==4.1.0.25
-tensorflow==1.14.0
+tensorflow==2.5.0
 Werkzeug==0.15.3
 firebase_admin==2.17.0
 Flask==1.0.2
